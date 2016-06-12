@@ -3,10 +3,10 @@ package ForAll.src.mironov;
 import java.io.*;
 
 public class CarExtern implements Externalizable {
-    private final String name;
-    private final int number;
-    private transient final double mileage;
-    private transient final boolean isFullTank;
+    private String name;
+    private int number;
+    private transient double mileage;
+    private transient boolean isFullTank;
 
     public CarExtern(String name, int number, double mileage, boolean isFullTank) {
         this.name = name;
@@ -33,11 +33,20 @@ public class CarExtern implements Externalizable {
 
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
-
+        out.writeObject(name);
+//        out.writeObject(number);
+//        out.writeObject(mileage);
+        out.writeObject(isFullTank);
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
-//        this.getNumber() = in.readInt();
+        name = (String) in.readObject();
+//        number = (int) in.readObject();
+//        mileage = (double) in.readObject();
+        isFullTank = (boolean) in.readObject();
+    }
+
+    public CarExtern() {
     }
 }
