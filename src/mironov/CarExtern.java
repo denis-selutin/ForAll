@@ -34,16 +34,16 @@ public class CarExtern implements Externalizable {
     @Override
     public void writeExternal(ObjectOutput out) throws IOException {
         out.writeObject(name);
-//        out.writeObject(number);
-//        out.writeObject(mileage);
+        out.writeObject(number);
+        out.writeObject(mileage);
         out.writeObject(isFullTank);
     }
 
     @Override
     public void readExternal(ObjectInput in) throws IOException, ClassNotFoundException {
         name = (String) in.readObject();
-//        number = (int) in.readObject();
-//        mileage = (double) in.readObject();
+        number = (int) in.readObject();
+        mileage = (double) in.readObject();
         isFullTank = (boolean) in.readObject();
     }
 
